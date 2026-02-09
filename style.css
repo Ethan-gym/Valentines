@@ -194,7 +194,7 @@ button:active {
 
 @media (max-width: 768px) {
     .walk {
-        bottom: calc(95px + env(safe-area-inset-bottom));
+        bottom: calc(130px + env(safe-area-inset-bottom));
     }
 }
 
