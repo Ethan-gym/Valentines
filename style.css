@@ -186,7 +186,7 @@ button:active {
 .walk {
     position: absolute;
     bottom: calc(70px + env(safe-area-inset-bottom));
-    left: -80px;
+    left: -100px;
     display: flex;
     gap: 16px;
     opacity: 0;
@@ -586,3 +586,4 @@ button:active {
         transform: translateY(0);
     }
 }
+
