@@ -17,6 +17,15 @@ function preventScroll(e) {
     }
 }
 
+function smoothScrollTo(element) {
+    const y = element.getBoundingClientRect().top + window.pageYOffset;
+
+    window.scrollTo({
+        top: y,
+        behavior: "smooth"
+    });
+}
+
 function lockScroll() {
     scrollLocked = true;
     document.body.classList.add("locked");
@@ -55,10 +64,9 @@ function fadeOutMusic(audio, duration = 500) {
 function goToGame() {
     unlockScroll();
 
-    document.getElementById("game")
-        .scrollIntoView({ behavior: "smooth" });
+    smoothScrollTo(document.getElementById("game"));
 
-    setTimeout(lockScroll, 800); // relock after scroll
+    setTimeout(lockScroll, 900);
     startCountdown();
 }
 
@@ -236,9 +244,11 @@ function startEnding() {
 
     /* MUSIC: start AFTER 5000ms (no fade-in) */
     setTimeout(() => {
+        music.currentTime = 0;
         music.volume = 1.0;
-        music.play().catch(() => {}); // iOS-safe
+        music.play();
     }, 6000);
+
 
     /* Fade music out after 1 minute */
     setTimeout(() => {
@@ -265,22 +275,33 @@ function fakeHeartFeedback() {
 function goToCodeGame() {
     unlockScroll();
 
-    document.getElementById("code-game")
-        .scrollIntoView({ behavior: "smooth" });
+    smoothScrollTo(document.getElementById("code-game"));
 
-    setTimeout(lockScroll, 800);
+    setTimeout(lockScroll, 900);
 }
+
 
 
 function goToEnding() {
     unlockScroll();
 
-    document.getElementById("ending")
-        .scrollIntoView({ behavior: "smooth" });
+    const music = document.getElementById("bg-music");
 
-    setTimeout(lockScroll, 800);
-    setTimeout(startEnding, 600);
+    /* iOS AUDIO UNLOCK (must happen inside tap) */
+    music.volume = 0;
+    music.play().then(() => {
+        music.pause();
+        music.currentTime = 0;
+    }).catch(() => {});
+
+    smoothScrollTo(document.getElementById("ending"));
+
+    setTimeout(() => {
+        lockScroll();
+        startEnding();
+    }, 900);
 }
+
 
 
 function showWinCelebration() {
