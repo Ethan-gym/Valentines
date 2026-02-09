@@ -244,7 +244,6 @@ function startEnding() {
 
     /* MUSIC: start AFTER 5000ms (no fade-in) */
     setTimeout(() => {
-        music.pause();           // force stop anything early
         music.currentTime = 0;   // reset timeline
         music.volume = 1.0;
         music.play();            // now play for real
@@ -290,11 +289,11 @@ function goToEnding() {
     const music = document.getElementById("bg-music");
 
     /* iOS AUDIO UNLOCK (must happen inside tap) */
-    music.volume = 0;
-    music.play().then(() => {
-        music.pause();
-        music.currentTime = 0;
-    }).catch(() => {});
+    music.muted = true;
+    music.play().catch(() => {});
+    music.pause();
+    music.currentTime = 0;
+    music.muted = false;
 
     smoothScrollTo(document.getElementById("ending"));
 
