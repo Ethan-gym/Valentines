@@ -185,7 +185,7 @@ button:active {
 /* Walk container */
 .walk {
     position: absolute;
-    bottom: calc(150px + env(safe-area-inset-bottom));
+    bottom: calc(100px + env(safe-area-inset-bottom));
     left: -80px;
     display: flex;
     gap: 16px;
