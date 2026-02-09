@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>For My Valentine 💖</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+
+</head>
+<body>
+
+<!-- SECTION 1 -->
+<section class="section intro">
+    <div class="container">
+        <h1>Happy Valentine’s Day 💕</h1>
+        <h2>To Niri Amoni, my Love 🌸</h2>
+
+        <p class="message">
+            I made something special for you 💖  
+            Ready for a tiny game?
+        </p>
+
+        <button onclick="startIntroMusic(); goToGame()">YES 💝</button>
+    </div>
+</section>
+
+<!-- SECTION 2: GAME -->
+<section class="section game" id="game">
+    <h2>Catch the hearts 💗</h2>
+    <p>Collected: <span id="score">0</span> / 10</p>
+
+    <div class="game-area">
+        <div class="countdown" id="countdown">Are you ready?</div>
+        <div class="basket">🎁</div>
+    </div>
+
+    <button id="continueBtn" onclick="goToCodeGame()" hidden>
+        Continue 💕
+    </button>
+
+    <div id="winOverlay" class="win-overlay hidden">
+        <h2>YOU WON!💖</h2>
+        <p>(my heart)</p>
+    </div>
+
+</section>
+
+<!-- SECTION 3: LOVE CODE -->
+<section class="section game" id="code-game">
+    <h2>Crack the Code!🔐</h2>
+
+    <p class="message">
+        When was our first anniversary?<br>
+        <small>(only we know this😉)</small>
+    </p>
+
+    <input
+        type="text"
+        id="codeInput"
+        placeholder="DD-MM-YYYY"
+        inputmode="text"
+        autocomplete="off"
+    />
+
+    <button onclick="checkCode()">Unlock 💖</button>
+
+    <p id="codeError" class="error"></p>
+
+    <button id="codeContinueBtn" onclick="goToEnding()" hidden>
+        Continue 💕
+    </button>
+</section>
+
+<!-- SECTION 4: ENDING -->
+<section class="section ending" id="ending">
+    <div class="walk">
+        <div class="character boy"></div>
+        <div class="character girl"></div>
+    </div>
+
+    <div class="credits">
+        <p>
+            And in the end,<br><br>
+            I just want you to know…<br><br>
+            That no matter what comes our way, I will always love the woman you are and the woman you will be. 
+            You brought light to my world and I never hoped to find such joy in my days, but here you are..<br><br> 
+            with your beautiful smile, your glistening eyes, your long hair, your soft lips, and most importantly, 
+            your soul that calms the waves of my Heart.❤️<br><br>
+            I may not be able to express my feelings the way you want me to, and I do fall short at times, but I'd rather try a million
+            times with you again and again. <br><br>
+            I am certainly not blessed 
+            with perfection, but God, am I blessed to have you.<br><br> 
+            Forever yours 💕<br><br>
+            -EDT
+        </p>
+    </div>
+    <button id="replayBtn" class="replay-btn" hidden onclick="replayExperience()">
+        Replay? 💕
+    </button>
+</section>
+
+<audio id="intro-music" loop>
+    <source src="intro-music.mp3" type="audio/mpeg">
+</audio>
+
+<audio id="bg-music" preload="auto">
+    <source src="ending.mp3" type="audio/mpeg">
+</audio>
+
+<div class="fade-overlay"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
