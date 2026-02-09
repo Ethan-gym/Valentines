@@ -184,7 +184,7 @@ button:active {
 /* Walk container */
 .walk {
     position: absolute;
-    bottom: 40px;
+    bottom: 70px; /* position */
     left: -80px;
     display: flex;
     gap: 16px;
@@ -553,7 +553,7 @@ button:active {
 
 .replay-btn {
     position: absolute;
-    bottom: 40px;
+    bottom: 80px;
     padding: 14px 30px;
     font-size: 18px;
     border-radius: 30px;
