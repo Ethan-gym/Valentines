@@ -9,11 +9,23 @@ const gameArea = document.querySelector(".game-area");
 const basket = document.querySelector(".basket");
 const introMusic = document.getElementById("intro-music");
 
+let scrollLocked = false;
+
+function preventScroll(e) {
+    if (scrollLocked) {
+        e.preventDefault();
+    }
+}
+
 function lockScroll() {
+    scrollLocked = true;
     document.body.classList.add("locked");
+    window.addEventListener("touchmove", preventScroll, { passive: false });
+    window.addEventListener("wheel", preventScroll, { passive: false });
 }
 
 function unlockScroll() {
+    scrollLocked = false;
     document.body.classList.remove("locked");
 }
 
@@ -283,9 +295,9 @@ function showWinCelebration() {
     }
 
     setTimeout(() => {
+        unlockScroll();
         overlay.classList.add("hidden");
         continueBtn.hidden = false;
-        unlockScroll();
     }, 3000);
 }
 
@@ -303,4 +315,3 @@ function createConfetti() {
 
     setTimeout(() => confetti.remove(), 3000);
 }
-
