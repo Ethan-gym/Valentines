@@ -244,10 +244,12 @@ function startEnding() {
 
     /* MUSIC: start AFTER 5000ms (no fade-in) */
     setTimeout(() => {
-        music.currentTime = 0;
+        music.pause();           // force stop anything early
+        music.currentTime = 0;   // reset timeline
         music.volume = 1.0;
-        music.play();
-    }, 6000);
+        music.play();            // now play for real
+    }, 6500); // match credits start
+
 
 
     /* Fade music out after 1 minute */

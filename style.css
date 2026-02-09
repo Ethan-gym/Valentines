@@ -192,6 +192,11 @@ button:active {
     opacity: 0;
 }
 
+@media (max-width: 768px) {
+    .walk {
+        bottom: calc(95px + env(safe-area-inset-bottom));
+    }
+}
 
 /* Walk animation (triggered by JS) */
 .walk.animate {
@@ -199,6 +204,7 @@ button:active {
     opacity: 1;
     transition: opacity 1.5s ease;
 }
+
 
 @keyframes walkAcross {
     from { left: -80px; }
