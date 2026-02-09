@@ -194,7 +194,12 @@ button:active {
 
 @media (max-width: 768px) {
     .walk {
-        bottom: calc(130px + env(safe-area-inset-bottom));
+        bottom: calc(95px + env(safe-area-inset-bottom));
+    }
+}
+@supports (-webkit-touch-callout: none) {
+    .walk {
+        bottom: calc(120px + env(safe-area-inset-bottom));
     }
 }
 
