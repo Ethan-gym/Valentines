@@ -178,18 +178,20 @@ button:active {
 .ending > * {
     position: relative;
     z-index: 1;
+    padding-bottom: env(safe-area-inset-bottom);
 }
 
 
 /* Walk container */
 .walk {
     position: absolute;
-    bottom: 70px; /* position */
+    bottom: calc(70px + env(safe-area-inset-bottom));
     left: -80px;
     display: flex;
     gap: 16px;
     opacity: 0;
 }
+
 
 /* Walk animation (triggered by JS) */
 .walk.animate {
@@ -213,7 +215,7 @@ button:active {
 
 .credits {
     position: absolute;
-    bottom: -100%;
+    bottom: -150%;
     width: 100%;
     left: 0;
     text-align: center;
@@ -553,12 +555,19 @@ button:active {
 
 .replay-btn {
     position: absolute;
-    bottom: 80px;
+    bottom: calc(80px + env(safe-area-inset-bottom));
     padding: 14px 30px;
     font-size: 18px;
     border-radius: 30px;
     opacity: 0;
     animation: fadeInReplay 2s ease forwards;
+}
+
+
+@media (max-width: 480px) {
+    .replay-btn {
+        bottom: 60px;
+    }
 }
 
 @keyframes fadeInReplay {
