@@ -152,7 +152,7 @@ function collectHeart() {
     score++;
     document.getElementById("score").innerText = score;
 
-    if (score >= 1 && !finished) {
+    if (score >= 10 && !finished) {
         finished = true;
         clearInterval(heartSpawner);
 
@@ -303,3 +303,4 @@ function createConfetti() {
 
     setTimeout(() => confetti.remove(), 3000);
 }
+
